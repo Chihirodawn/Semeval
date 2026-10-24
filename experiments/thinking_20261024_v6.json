@@ -1,0 +1,113 @@
+{
+  "objective": "User-approved staged native thinking, evidence, ranking and continuous score supervision; no official Dev/Test",
+  "created_date": "2026-10-24",
+  "run_prefix": "qwen35_thinking_v6_20261024",
+  "gpu_uuid": "GPU-871e4596-df9c-1482-652c-397cffeb9846",
+  "gpu_lock": "gpu0_task5.lock",
+  "python": ".venv-qwen35-ce/bin/python",
+  "models": {
+    "4B": "models/Qwen3.5-4B",
+    "9B": "models/Qwen3.5-9B"
+  },
+  "model_revisions": {
+    "4B": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+    "9B": "c202236235762e1c871ad0ccb60c8ee5ba337b9a"
+  },
+  "cpu_proof": "reports/20261024/thinking_v6_cpu_VERIFIED.json",
+  "status_file": "thinking_20261024_v6_status.json",
+  "results_file": "reports/20261024/thinking_v6_results.json",
+  "source_sha256": {
+    "src/thinking_protocol.py": "5ae5a2c72ee75234890a86b8c9c1528b8a5bf503b78c850dbcb08dca6857bf65",
+    "src/thinking_model.py": "01e3ee42f0e0001ce358fab0cf6abaa79078019264c9e01ab2e1e8ca1124cde8",
+    "src/train_thinking.py": "330fff00bf37824b59e091fc837849d476ee3885d2ff609df90828de2637547c",
+    "src/ce_model_compare_v3.py": "811fae18ee5757199b321c84450a9b6893f0c7b51e341230c70298d42d0a7f5a",
+    "src/regression_methods/core.py": "25eb9bcde85a008a88b9851904bfc320c8817a45fceff175cd1095ea17b80d2d",
+    "src/regression_methods/train.py": "d36ffe1d2f8b3631b9c9bbc0f60025854e770ae1bb4ea5e9b7dbeaad42e78c69",
+    "src/train_encoder.py": "0ecb9bc5206bd50b04e300a6416c9df24fcd92ef4eb3acdc31161c05b2b52751",
+    "src/task5_data.py": "4ee73aec2f7c044133deed6faf0b8edef9ee090b14f2afd4f323c6d85e96e999",
+    "scripts/run_thinking_suite.py": "f2a1557b653d10aaffda4ac7b73a27a7e732350b74ec7474cee9493963aed987",
+    "scripts/verify_thinking_run.py": "0ffa8cb36e5a32ea8af054186d0dacc24035b3f58e77db6da2f1e157297700fb",
+    "scripts/summarize_thinking.py": "1263dea96aec8f9f2a1277bceec28638f5999ad6c85747f88c5aaead0b2696f8",
+    "scripts/verify_run.py": "66c3cc04067d94132d564d837be25a685d0699c309a7f644307b3328273eec24",
+    "tests/thinking_protocol_contract.py": "828314b213d65a4b13e16b77bbb14559e51212f6c99f556d17faf14b966caaa7",
+    "tests/thinking_model_contract.py": "f3232754e95a54cd78de2be168f436e5132296da607135adcaf5489f1c4ec854",
+    "scripts/check_thinking_contracts_v6.py": "e13c18441dedf0b852e372c33b5490dd2f96a28296d4e56819de981f725db05f",
+    "scripts/run_thinking_suite_v6.py": "5891c8374c3c26c488b2414ab4277aed1f1460a73be44902cd3e74a8cafb8e6d"
+  },
+  "data_sha256": {
+    "data/en_nn_seed2027/train.jsonl": "ee741cde53f4bc2aea3d76ae3975676d8d29a71f3154cb19957754d65970969f",
+    "data/en_nn_seed2027/val.jsonl": "ffa28b6b4205a4f5591621999b428ca1e50dadafc3add262a9f4ebd56c7482c6",
+    "data/en_nn_seed2027/split.json": "e222e8a2ad83bb0b32619f9598534fe837b5e45981be7903b4c7fff728cdeea3",
+    "runs/qwen35_thinking_v4_20261023_A0_seed2027/val_predictions.jsonl": "caa921ea89e40ebf77925028978adb871f655e8cd6975ebd72dde50f1fc81254"
+  },
+  "fixed_recipe": {
+    "training_seed": 2027,
+    "confirmation_seeds": [
+      2028,
+      2029
+    ],
+    "generation_seeds": [
+      2027,
+      2028,
+      2029
+    ],
+    "epochs": 3,
+    "lr": 5e-05,
+    "microbatch": 2,
+    "grad_accum": 8,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "cot_ce_weight": 0.1,
+    "pair_weight": 0.2,
+    "huber_weight": 0.5,
+    "huber_beta": 1.0,
+    "pair_tie_threshold": 0.25,
+    "pilot_rows": 64,
+    "budgets": [
+      512,
+      1024,
+      2048
+    ],
+    "max_sequence_tokens": 4096,
+    "max_fallback_fraction": 0.01,
+    "max_attempts": 3,
+    "sampling": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "presence_penalty": 0.0
+    },
+    "pilot_max_attempts": 3
+  },
+  "gates": {
+    "max_thinking_regression": 0.005,
+    "min_rho_promotion": 0.005,
+    "max_rmse_regression": 0.01,
+    "confirm_positive_seeds": 2,
+    "combined_only_if_both_improve": true
+  },
+  "limits": {
+    "queue_hours": 72,
+    "stage_hours": 24,
+    "disk_min_free_gib": 5
+  },
+  "assumptions": [
+    "GPU0 selected from live empty-card snapshot; do not touch GPU1 processes",
+    "Existing runtime and all original source/weights stay unchanged",
+    "A0 shares the new score cue, microbatch and paired ordering with new reasoning arms",
+    "Per-example sampling/KV generation added to extracted native text backbone and original LM head",
+    "Frozen 4B teacher cache is reused across seeds and 9B; not full TRACT reproduction"
+  ],
+  "supersedes": "v5 failed native free-thinking admission; fixed Train-only role ambiguity, no quality-driven prompt search",
+  "implementation_refinement": [
+    "Keep all direct A0 prompt tokens/score path and reuse verified matched baseline; compare all1408 Val direct prompts",
+    "Native thinking requests actual word in a sentence/expression, no modifier/head role labels in generated prompt and no assistant partial-sentence scaffold",
+    "One predetermined input-format repair based only on failed Train traces; no prompt grid search or Val selection",
+    "Independent A1/A2 length pilots; rejection of a length pilot still runs the other style pilot, but any OOM/source/verification error stops; full matrix requires both original admission gates",
+    "Original caps512/1024/2048 and99% after at most3 attempts; unchanged0 presence, temperature1/top_p.95/top_k20, no forced closing/truncation",
+    "Record elapsed and peak memory even for failures; no training formula/precision changes"
+  ],
+  "reuse_baseline": "runs/qwen35_thinking_v4_20261023_A0_seed2027",
+  "baseline_prediction_sha256": "caa921ea89e40ebf77925028978adb871f655e8cd6975ebd72dde50f1fc81254"
+}

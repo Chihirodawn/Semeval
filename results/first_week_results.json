@@ -1,0 +1,737 @@
+{
+  "scope": "13 complete 704-row Internal Val evaluations; includes zero-shot RAIL and one-epoch REAL, not 13 full training jobs",
+  "runs": [
+    {
+      "run": "deberta_context_seed2027",
+      "status": "COMPLETED",
+      "scope": "Internal Val, EN NN, no official Dev/Test",
+      "metrics": {
+        "rows": 704,
+        "metric_implementation": "local_public_definition_ddof0_singletons0",
+        "ModAvg": {
+          "spearman": 0.4962229448417313,
+          "rmse": 0.7331763713997723,
+          "context_variance_spearman": 0.15341399989073187,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "HeadAvg": {
+          "spearman": 0.5737309256203716,
+          "rmse": 0.618211357155634,
+          "context_variance_spearman": 0.019697137360719787,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "mean_spearman": 0.5349769352310515,
+        "mean_rmse": 0.6756938642777032
+      },
+      "best_epoch": 3,
+      "config": {
+        "mode": "context",
+        "seed": 2027,
+        "epochs": 3,
+        "batch_size": 8,
+        "grad_accum": 2,
+        "lr": 2e-05,
+        "head_lr": 0.0001,
+        "pooling": "FP32 attention-mask mean, including special tokens"
+      },
+      "model_revision": "8ccc9b6f36199bec6961081d44eb72fb3f7353f3",
+      "source_sha256": {
+        "src/train_encoder.py": "0ecb9bc5206bd50b04e300a6416c9df24fcd92ef4eb3acdc31161c05b2b52751",
+        "src/task5_data.py": "4ee73aec2f7c044133deed6faf0b8edef9ee090b14f2afd4f323c6d85e96e999"
+      },
+      "data_sha256": {
+        "train_sha256": "ee741cde53f4bc2aea3d76ae3975676d8d29a71f3154cb19957754d65970969f",
+        "val_sha256": "ffa28b6b4205a4f5591621999b428ca1e50dadafc3add262a9f4ebd56c7482c6"
+      },
+      "prediction_sha256": "2ea8ec650c047520f695af4e15460adbfd4eca5ca52328f0e78feabf1ff7cf21",
+      "independent_verification": "PASS",
+      "local_verification": "PASS"
+    },
+    {
+      "run": "deberta_target_only_seed2027",
+      "status": "COMPLETED",
+      "scope": "Internal Val, EN NN, no official Dev/Test",
+      "metrics": {
+        "rows": 704,
+        "metric_implementation": "local_public_definition_ddof0_singletons0",
+        "ModAvg": {
+          "spearman": 0.5491594099369876,
+          "rmse": 0.7274477550685874,
+          "context_variance_spearman": null,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "HeadAvg": {
+          "spearman": 0.5445703672282602,
+          "rmse": 0.6553109057720019,
+          "context_variance_spearman": null,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "mean_spearman": 0.5468648885826239,
+        "mean_rmse": 0.6913793304202946
+      },
+      "best_epoch": 2,
+      "config": {
+        "mode": "target_only",
+        "seed": 2027,
+        "epochs": 3,
+        "batch_size": 8,
+        "grad_accum": 2,
+        "lr": 2e-05,
+        "head_lr": 0.0001,
+        "pooling": "FP32 attention-mask mean, including special tokens"
+      },
+      "model_revision": "8ccc9b6f36199bec6961081d44eb72fb3f7353f3",
+      "source_sha256": {
+        "src/train_encoder.py": "0ecb9bc5206bd50b04e300a6416c9df24fcd92ef4eb3acdc31161c05b2b52751",
+        "src/task5_data.py": "4ee73aec2f7c044133deed6faf0b8edef9ee090b14f2afd4f323c6d85e96e999"
+      },
+      "data_sha256": {
+        "train_sha256": "ee741cde53f4bc2aea3d76ae3975676d8d29a71f3154cb19957754d65970969f",
+        "val_sha256": "ffa28b6b4205a4f5591621999b428ca1e50dadafc3add262a9f4ebd56c7482c6"
+      },
+      "prediction_sha256": "958b0b1171b18049f7d8b69c689f386559b5866528e06263819901684b8bbda1",
+      "independent_verification": "PASS",
+      "local_verification": "PASS"
+    },
+    {
+      "run": "qwen35_4b_ce_v3_seed2027",
+      "status": "COMPLETED",
+      "scope": "EN NN Internal Val; no official Dev/Test",
+      "metrics": {
+        "rows": 704,
+        "metric_implementation": "local_public_definition_ddof0_singletons0",
+        "ModAvg": {
+          "spearman": 0.6525221342255427,
+          "rmse": 0.6129277698357669,
+          "context_variance_spearman": 0.24019509787031415,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "HeadAvg": {
+          "spearman": 0.6773949087642344,
+          "rmse": 0.5544454562286466,
+          "context_variance_spearman": 0.38697815363882,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "mean_spearman": 0.6649585214948885,
+        "mean_rmse": 0.5836866130322067
+      },
+      "best_epoch": 3,
+      "config": {
+        "mode": "ce",
+        "seed": 2027,
+        "epochs": 3,
+        "actual_epochs": 3,
+        "batch_size": 8,
+        "grad_accum": 2,
+        "lr": 5e-05,
+        "loss": "adjacent-bin soft CE preserving continuous label mean",
+        "expectation": "sum y*p_full_vocab(y), no digit-only renormalization",
+        "enable_thinking": false,
+        "adaptations": [
+          "Qwen3.5 text backbone, vision discarded",
+          "include linear-attention projections in attention-only LoRA",
+          "new isolated Transformers/PEFT runtime",
+          "native non-thinking chat template; same prompt strings",
+          "large-model microbatch may differ; effective batch16 unchanged"
+        ]
+      },
+      "model_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "source_sha256": {
+        "src/ce_model_compare_v3.py": "811fae18ee5757199b321c84450a9b6893f0c7b51e341230c70298d42d0a7f5a",
+        "src/regression_methods/core.py": "25eb9bcde85a008a88b9851904bfc320c8817a45fceff175cd1095ea17b80d2d",
+        "src/regression_methods/train.py": "d36ffe1d2f8b3631b9c9bbc0f60025854e770ae1bb4ea5e9b7dbeaad42e78c69",
+        "src/task5_data.py": "4ee73aec2f7c044133deed6faf0b8edef9ee090b14f2afd4f323c6d85e96e999",
+        "src/train_encoder.py": "0ecb9bc5206bd50b04e300a6416c9df24fcd92ef4eb3acdc31161c05b2b52751"
+      },
+      "data_sha256": {
+        "train_sha256": "ee741cde53f4bc2aea3d76ae3975676d8d29a71f3154cb19957754d65970969f",
+        "val_sha256": "ffa28b6b4205a4f5591621999b428ca1e50dadafc3add262a9f4ebd56c7482c6"
+      },
+      "prediction_sha256": "2bc7bbfbd8924cc000d980a932acf300d3cdfba3c259bbd900657ee685b19725",
+      "independent_verification": "PASS",
+      "local_verification": "PASS"
+    },
+    {
+      "run": "qwen35_9b_ce_v3_retry1_seed2027",
+      "status": "COMPLETED",
+      "scope": "EN NN Internal Val; no official Dev/Test",
+      "metrics": {
+        "rows": 704,
+        "metric_implementation": "local_public_definition_ddof0_singletons0",
+        "ModAvg": {
+          "spearman": 0.6585412270387969,
+          "rmse": 0.628879685277578,
+          "context_variance_spearman": 0.22231963874749683,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "HeadAvg": {
+          "spearman": 0.6880045665706738,
+          "rmse": 0.5440829024414291,
+          "context_variance_spearman": 0.4765512280909185,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "mean_spearman": 0.6732728968047353,
+        "mean_rmse": 0.5864812938595035
+      },
+      "best_epoch": 3,
+      "config": {
+        "mode": "ce",
+        "seed": 2027,
+        "epochs": 3,
+        "actual_epochs": 3,
+        "batch_size": 2,
+        "grad_accum": 8,
+        "lr": 5e-05,
+        "loss": "adjacent-bin soft CE preserving continuous label mean",
+        "expectation": "sum y*p_full_vocab(y), no digit-only renormalization",
+        "enable_thinking": false,
+        "adaptations": [
+          "Qwen3.5 text backbone, vision discarded",
+          "include linear-attention projections in attention-only LoRA",
+          "new isolated Transformers/PEFT runtime",
+          "native non-thinking chat template; same prompt strings",
+          "large-model microbatch may differ; effective batch16 unchanged"
+        ]
+      },
+      "model_revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+      "source_sha256": {
+        "src/ce_model_compare_v3.py": "811fae18ee5757199b321c84450a9b6893f0c7b51e341230c70298d42d0a7f5a",
+        "src/regression_methods/core.py": "25eb9bcde85a008a88b9851904bfc320c8817a45fceff175cd1095ea17b80d2d",
+        "src/regression_methods/train.py": "d36ffe1d2f8b3631b9c9bbc0f60025854e770ae1bb4ea5e9b7dbeaad42e78c69",
+        "src/task5_data.py": "4ee73aec2f7c044133deed6faf0b8edef9ee090b14f2afd4f323c6d85e96e999",
+        "src/train_encoder.py": "0ecb9bc5206bd50b04e300a6416c9df24fcd92ef4eb3acdc31161c05b2b52751"
+      },
+      "data_sha256": {
+        "train_sha256": "ee741cde53f4bc2aea3d76ae3975676d8d29a71f3154cb19957754d65970969f",
+        "val_sha256": "ffa28b6b4205a4f5591621999b428ca1e50dadafc3add262a9f4ebd56c7482c6"
+      },
+      "prediction_sha256": "50bc87e42aa1136571d0eb25a3db56a5d8c13b565e54ecf8562cc15a5a04617f",
+      "independent_verification": "PASS",
+      "local_verification": "PASS"
+    },
+    {
+      "run": "qwen35_thinking_v4_20261023_A0_seed2027",
+      "status": "COMPLETED",
+      "scope": "EN NN Internal Val; no official Dev/Test",
+      "metrics": {
+        "rows": 704,
+        "metric_implementation": "local_public_definition_ddof0_singletons0",
+        "ModAvg": {
+          "spearman": 0.6381471397171086,
+          "rmse": 0.6274487295962329,
+          "context_variance_spearman": 0.26105831230365956,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "HeadAvg": {
+          "spearman": 0.6698391895732341,
+          "rmse": 0.5609728508251919,
+          "context_variance_spearman": 0.346009303754001,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "mean_spearman": 0.6539931646451713,
+        "mean_rmse": 0.5942107902107123
+      },
+      "best_epoch": 3,
+      "config": {
+        "seed": 2027,
+        "epochs": 3,
+        "batch_size": 2,
+        "grad_accum": 8,
+        "lr": 5e-05,
+        "expectation": "sum y*p_full_vocab(y), no digit-only renormalization",
+        "cot_ce_weight": 0.0,
+        "rank_weight": 0.0,
+        "huber_weight": 0.0,
+        "enable_thinking": false,
+        "adaptations": [
+          "TRACT-inspired CoT CE plus soft score CE, not full TRACT",
+          "local frozen 4B Train teacher, no gold input",
+          "new native-thinking generation and strict admission; no legacy64-token decoder",
+          "native LM head frozen, LoRA rank16 alpha32 dropout0.05",
+          "new shared double-newline score cue and micro2 paired ordering for all new arms"
+        ]
+      },
+      "model_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "source_sha256": {
+        "snapshots/a0_v4/src/train_thinking.py": "12c416bac1065520f995f1086eac86fde198492586c66c0ddd3d3a8171b06731",
+        "snapshots/a0_v4/src/thinking_model.py": "8851bf5db50a2f769d7131b781f2add1419734841a5762ba7f867f2c9c713bf6",
+        "snapshots/a0_v4/src/thinking_protocol.py": "1f224332cfa3f7cdbd23aa32f663299da253d1183637cc29561a8e37d2a8732c",
+        "src/ce_model_compare_v3.py": "811fae18ee5757199b321c84450a9b6893f0c7b51e341230c70298d42d0a7f5a",
+        "src/regression_methods/core.py": "25eb9bcde85a008a88b9851904bfc320c8817a45fceff175cd1095ea17b80d2d",
+        "src/regression_methods/train.py": "d36ffe1d2f8b3631b9c9bbc0f60025854e770ae1bb4ea5e9b7dbeaad42e78c69",
+        "src/train_encoder.py": "0ecb9bc5206bd50b04e300a6416c9df24fcd92ef4eb3acdc31161c05b2b52751",
+        "src/task5_data.py": "4ee73aec2f7c044133deed6faf0b8edef9ee090b14f2afd4f323c6d85e96e999"
+      },
+      "data_sha256": {
+        "train_sha256": "ee741cde53f4bc2aea3d76ae3975676d8d29a71f3154cb19957754d65970969f",
+        "val_sha256": "ffa28b6b4205a4f5591621999b428ca1e50dadafc3add262a9f4ebd56c7482c6"
+      },
+      "prediction_sha256": "caa921ea89e40ebf77925028978adb871f655e8cd6975ebd72dde50f1fc81254",
+      "independent_verification": "PASS",
+      "local_verification": "PASS"
+    },
+    {
+      "run": "qwen4b_ce_seed2027",
+      "status": "COMPLETED",
+      "scope": "EN NN Internal Val; no official Dev/Test",
+      "metrics": {
+        "rows": 704,
+        "metric_implementation": "local_public_definition_ddof0_singletons0",
+        "ModAvg": {
+          "spearman": 0.6557463698178041,
+          "rmse": 0.6158316253770508,
+          "context_variance_spearman": 0.33673108925691964,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "HeadAvg": {
+          "spearman": 0.6664058907143467,
+          "rmse": 0.5530602532147401,
+          "context_variance_spearman": 0.32043037296158855,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "mean_spearman": 0.6610761302660755,
+        "mean_rmse": 0.5844459392958954
+      },
+      "best_epoch": 3,
+      "config": {
+        "mode": "ce",
+        "seed": 2027,
+        "epochs": 3,
+        "actual_epochs": 3,
+        "batch_size": 8,
+        "grad_accum": 2,
+        "lr": 5e-05,
+        "loss": "adjacent-bin soft CE preserving continuous label mean",
+        "expectation": "sum y*p_full_vocab(y), no digit-only renormalization",
+        "adaptations": [
+          "independent modifier/head scalar prompts",
+          "continuous labels, grid0..5",
+          "BF16 LoRA attention r16 alpha32",
+          "local Qwen teacher instead of GPT4",
+          "bounded64-token CoTs",
+          "REAL one-epoch pilot, no auxiliary score CE"
+        ]
+      },
+      "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+      "source_sha256": {
+        "src/regression_methods/train.py": "d36ffe1d2f8b3631b9c9bbc0f60025854e770ae1bb4ea5e9b7dbeaad42e78c69",
+        "src/regression_methods/core.py": "25eb9bcde85a008a88b9851904bfc320c8817a45fceff175cd1095ea17b80d2d",
+        "src/task5_data.py": "4ee73aec2f7c044133deed6faf0b8edef9ee090b14f2afd4f323c6d85e96e999",
+        "src/train_encoder.py": "0ecb9bc5206bd50b04e300a6416c9df24fcd92ef4eb3acdc31161c05b2b52751"
+      },
+      "data_sha256": {
+        "train_sha256": "ee741cde53f4bc2aea3d76ae3975676d8d29a71f3154cb19957754d65970969f",
+        "val_sha256": "ffa28b6b4205a4f5591621999b428ca1e50dadafc3add262a9f4ebd56c7482c6"
+      },
+      "prediction_sha256": "444363c9ed93b4914a0c0388d6b64e8639f936e164aa05f1d5b942d9d682a3ae",
+      "independent_verification": "PASS",
+      "local_verification": "PASS"
+    },
+    {
+      "run": "qwen4b_context_b8_seed2027",
+      "status": "COMPLETED",
+      "scope": "EN NN Internal Val; no official Dev/Test",
+      "metrics": {
+        "rows": 704,
+        "metric_implementation": "local_public_definition_ddof0_singletons0",
+        "ModAvg": {
+          "spearman": 0.6082882803250622,
+          "rmse": 0.6488242649461282,
+          "context_variance_spearman": 0.34910771666862267,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "HeadAvg": {
+          "spearman": 0.6069546990007917,
+          "rmse": 0.6065779568885733,
+          "context_variance_spearman": 0.2656889074288084,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "mean_spearman": 0.607621489662927,
+        "mean_rmse": 0.6277011109173507
+      },
+      "best_epoch": 3,
+      "config": {
+        "seed": 2027,
+        "epochs": 3,
+        "batch_size": 8,
+        "grad_accum": 2,
+        "lr": 5e-05,
+        "head_lr": 0.0001,
+        "pooling": "last non-pad token after full context, target fields and assistant prefix; right padding",
+        "loss": "two-score mean MSE; no language model cross entropy"
+      },
+      "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+      "source_sha256": {
+        "src/train_encoder.py": "0ecb9bc5206bd50b04e300a6416c9df24fcd92ef4eb3acdc31161c05b2b52751",
+        "src/task5_data.py": "4ee73aec2f7c044133deed6faf0b8edef9ee090b14f2afd4f323c6d85e96e999",
+        "src/train_qwen.py": "df5dca739edafccaf42bc32832bee8bb8c30ae7b20fe57b5ff8f051c9c1bd4ff"
+      },
+      "data_sha256": {
+        "train_sha256": "ee741cde53f4bc2aea3d76ae3975676d8d29a71f3154cb19957754d65970969f",
+        "val_sha256": "ffa28b6b4205a4f5591621999b428ca1e50dadafc3add262a9f4ebd56c7482c6"
+      },
+      "prediction_sha256": "6f6b993a685db81c1377c201e6b3cdfb8bf181e6e16373114e0675a95f5705db",
+      "independent_verification": "PASS",
+      "local_verification": "PASS"
+    },
+    {
+      "run": "qwen4b_mean_seed2027",
+      "status": "COMPLETED",
+      "scope": "EN NN Internal Val; no official Dev/Test",
+      "metrics": {
+        "rows": 704,
+        "metric_implementation": "local_public_definition_ddof0_singletons0",
+        "ModAvg": {
+          "spearman": 0.5714759384189573,
+          "rmse": 0.7001518314145888,
+          "context_variance_spearman": 0.19103758528256648,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "HeadAvg": {
+          "spearman": 0.5326181150710807,
+          "rmse": 0.6451565091868576,
+          "context_variance_spearman": 0.011210466507024019,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "mean_spearman": 0.552047026745019,
+        "mean_rmse": 0.6726541703007232
+      },
+      "best_epoch": 3,
+      "config": {
+        "seed": 2027,
+        "epochs": 3,
+        "batch_size": 8,
+        "grad_accum": 2,
+        "lr": 5e-05,
+        "head_lr": 0.0001,
+        "pooling": "masked mean of all non-pad final hidden states; FP32 heads",
+        "loss": "two-score mean MSE; no language model cross entropy"
+      },
+      "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+      "source_sha256": {
+        "src/train_encoder.py": "0ecb9bc5206bd50b04e300a6416c9df24fcd92ef4eb3acdc31161c05b2b52751",
+        "src/task5_data.py": "4ee73aec2f7c044133deed6faf0b8edef9ee090b14f2afd4f323c6d85e96e999",
+        "src/train_qwen.py": "df5dca739edafccaf42bc32832bee8bb8c30ae7b20fe57b5ff8f051c9c1bd4ff",
+        "src/train_qwen_mean.py": "3940cc0737088166ce47678749e8eb298c09f524632c796ab8cd64caa6dfe056"
+      },
+      "data_sha256": {
+        "train_sha256": "ee741cde53f4bc2aea3d76ae3975676d8d29a71f3154cb19957754d65970969f",
+        "val_sha256": "ffa28b6b4205a4f5591621999b428ca1e50dadafc3add262a9f4ebd56c7482c6"
+      },
+      "prediction_sha256": "009680e7736ff798fee1446bf3b0237ab6cbff481659f213fb5a496ec3c96563",
+      "independent_verification": "PASS",
+      "local_verification": "PASS"
+    },
+    {
+      "run": "qwen4b_raft_seed2027",
+      "status": "COMPLETED",
+      "scope": "EN NN Internal Val; no official Dev/Test",
+      "metrics": {
+        "rows": 704,
+        "metric_implementation": "local_public_definition_ddof0_singletons0",
+        "ModAvg": {
+          "spearman": 0.6425862522881715,
+          "rmse": 0.6159937475040126,
+          "context_variance_spearman": 0.34757553445809547,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "HeadAvg": {
+          "spearman": 0.6565985754330528,
+          "rmse": 0.557278948854924,
+          "context_variance_spearman": 0.3328495609902507,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "mean_spearman": 0.6495924138606122,
+        "mean_rmse": 0.5866363481794683
+      },
+      "best_epoch": 3,
+      "config": {
+        "mode": "raft",
+        "seed": 2027,
+        "epochs": 3,
+        "actual_epochs": 3,
+        "batch_size": 8,
+        "grad_accum": 2,
+        "lr": 5e-05,
+        "loss": "MSE on numeric expectation",
+        "expectation": "sum y*p_full_vocab(y), no digit-only renormalization",
+        "adaptations": [
+          "independent modifier/head scalar prompts",
+          "continuous labels, grid0..5",
+          "BF16 LoRA attention r16 alpha32",
+          "local Qwen teacher instead of GPT4",
+          "bounded64-token CoTs",
+          "REAL one-epoch pilot, no auxiliary score CE"
+        ]
+      },
+      "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+      "source_sha256": {
+        "src/regression_methods/train.py": "d36ffe1d2f8b3631b9c9bbc0f60025854e770ae1bb4ea5e9b7dbeaad42e78c69",
+        "src/regression_methods/core.py": "25eb9bcde85a008a88b9851904bfc320c8817a45fceff175cd1095ea17b80d2d",
+        "src/task5_data.py": "4ee73aec2f7c044133deed6faf0b8edef9ee090b14f2afd4f323c6d85e96e999",
+        "src/train_encoder.py": "0ecb9bc5206bd50b04e300a6416c9df24fcd92ef4eb3acdc31161c05b2b52751"
+      },
+      "data_sha256": {
+        "train_sha256": "ee741cde53f4bc2aea3d76ae3975676d8d29a71f3154cb19957754d65970969f",
+        "val_sha256": "ffa28b6b4205a4f5591621999b428ca1e50dadafc3add262a9f4ebd56c7482c6"
+      },
+      "prediction_sha256": "9e14b33ed2b17eb005edd94a5cacbebfae1417d12614e0b1c11ce3310144818b",
+      "independent_verification": "PASS",
+      "local_verification": "PASS"
+    },
+    {
+      "run": "qwen4b_rail_seed2027",
+      "status": "COMPLETED",
+      "scope": "EN NN Internal Val; no official Dev/Test",
+      "metrics": {
+        "rows": 704,
+        "metric_implementation": "local_public_definition_ddof0_singletons0",
+        "ModAvg": {
+          "spearman": 0.22981747453619578,
+          "rmse": 1.2597022863470704,
+          "context_variance_spearman": 0.037521439911132784,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "HeadAvg": {
+          "spearman": 0.272688450152805,
+          "rmse": 1.0781821995409004,
+          "context_variance_spearman": 0.2733413063580526,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "mean_spearman": 0.2512529623445004,
+        "mean_rmse": 1.1689422429439853
+      },
+      "best_epoch": 0,
+      "config": {
+        "mode": "rail",
+        "seed": 2027,
+        "epochs": 3,
+        "actual_epochs": 0,
+        "batch_size": 8,
+        "grad_accum": 2,
+        "lr": 5e-05,
+        "loss": "none",
+        "expectation": "sum y*p_full_vocab(y), no digit-only renormalization",
+        "adaptations": [
+          "independent modifier/head scalar prompts",
+          "continuous labels, grid0..5",
+          "BF16 LoRA attention r16 alpha32",
+          "local Qwen teacher instead of GPT4",
+          "bounded64-token CoTs",
+          "REAL one-epoch pilot, no auxiliary score CE"
+        ]
+      },
+      "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+      "source_sha256": {
+        "src/regression_methods/train.py": "d36ffe1d2f8b3631b9c9bbc0f60025854e770ae1bb4ea5e9b7dbeaad42e78c69",
+        "src/regression_methods/core.py": "25eb9bcde85a008a88b9851904bfc320c8817a45fceff175cd1095ea17b80d2d",
+        "src/task5_data.py": "4ee73aec2f7c044133deed6faf0b8edef9ee090b14f2afd4f323c6d85e96e999",
+        "src/train_encoder.py": "0ecb9bc5206bd50b04e300a6416c9df24fcd92ef4eb3acdc31161c05b2b52751"
+      },
+      "data_sha256": {
+        "train_sha256": "ee741cde53f4bc2aea3d76ae3975676d8d29a71f3154cb19957754d65970969f",
+        "val_sha256": "ffa28b6b4205a4f5591621999b428ca1e50dadafc3add262a9f4ebd56c7482c6"
+      },
+      "prediction_sha256": "7b5176f10f6a568462aa387fc8fe1c1c574642f28ad5cd3b7e72b5f263dcb236",
+      "independent_verification": "PASS",
+      "local_verification": "PASS"
+    },
+    {
+      "run": "qwen4b_real_seed2027",
+      "status": "COMPLETED",
+      "scope": "EN NN Internal Val; no official Dev/Test",
+      "metrics": {
+        "rows": 704,
+        "metric_implementation": "local_public_definition_ddof0_singletons0",
+        "ModAvg": {
+          "spearman": 0.623305561272952,
+          "rmse": 0.624021629594312,
+          "context_variance_spearman": 0.3145655199446261,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "HeadAvg": {
+          "spearman": 0.6229229644190106,
+          "rmse": 0.5939752101552666,
+          "context_variance_spearman": 0.39587332258326957,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "mean_spearman": 0.6231142628459814,
+        "mean_rmse": 0.6089984198747893
+      },
+      "best_epoch": 1,
+      "config": {
+        "mode": "real",
+        "seed": 2027,
+        "epochs": 1,
+        "actual_epochs": 1,
+        "batch_size": 2,
+        "grad_accum": 8,
+        "lr": 1e-05,
+        "loss": "on-policy K2 RLOO trajectory sum-logprob + beta1 prediction MSE; lambda0",
+        "expectation": "sum y*p_full_vocab(y), no digit-only renormalization",
+        "adaptations": [
+          "independent modifier/head scalar prompts",
+          "continuous labels, grid0..5",
+          "BF16 LoRA attention r16 alpha32",
+          "local Qwen teacher instead of GPT4",
+          "bounded64-token CoTs",
+          "REAL one-epoch pilot, no auxiliary score CE"
+        ]
+      },
+      "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+      "source_sha256": {
+        "src/regression_methods/train.py": "d36ffe1d2f8b3631b9c9bbc0f60025854e770ae1bb4ea5e9b7dbeaad42e78c69",
+        "src/regression_methods/core.py": "25eb9bcde85a008a88b9851904bfc320c8817a45fceff175cd1095ea17b80d2d",
+        "src/task5_data.py": "4ee73aec2f7c044133deed6faf0b8edef9ee090b14f2afd4f323c6d85e96e999",
+        "src/train_encoder.py": "0ecb9bc5206bd50b04e300a6416c9df24fcd92ef4eb3acdc31161c05b2b52751"
+      },
+      "data_sha256": {
+        "train_sha256": "ee741cde53f4bc2aea3d76ae3975676d8d29a71f3154cb19957754d65970969f",
+        "val_sha256": "ffa28b6b4205a4f5591621999b428ca1e50dadafc3add262a9f4ebd56c7482c6"
+      },
+      "prediction_sha256": "581e6646bdf37fe437359cbfe5848d47a0f6e47da62b9a94ecc2ad3c3ea05abb",
+      "independent_verification": "PASS",
+      "local_verification": "PASS"
+    },
+    {
+      "run": "qwen4b_tract_s1_seed2027",
+      "status": "COMPLETED",
+      "scope": "EN NN Internal Val; no official Dev/Test",
+      "metrics": {
+        "rows": 704,
+        "metric_implementation": "local_public_definition_ddof0_singletons0",
+        "ModAvg": {
+          "spearman": 0.5881053973940026,
+          "rmse": 0.6408756095574843,
+          "context_variance_spearman": 0.3918641124657234,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "HeadAvg": {
+          "spearman": 0.6395166397226256,
+          "rmse": 0.5818734904148181,
+          "context_variance_spearman": 0.33340284901071887,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "mean_spearman": 0.6138110185583141,
+        "mean_rmse": 0.6113745499861512
+      },
+      "best_epoch": 3,
+      "config": {
+        "mode": "tract",
+        "seed": 2027,
+        "epochs": 3,
+        "actual_epochs": 3,
+        "batch_size": 8,
+        "grad_accum": 2,
+        "lr": 5e-05,
+        "loss": "MSE + token-mean CE on annotated reasoning and fixed score delimiter; numeric score masked from CE",
+        "expectation": "sum y*p_full_vocab(y), no digit-only renormalization",
+        "adaptations": [
+          "independent modifier/head scalar prompts",
+          "continuous labels, grid0..5",
+          "BF16 LoRA attention r16 alpha32",
+          "local Qwen teacher instead of GPT4",
+          "bounded64-token CoTs",
+          "REAL one-epoch pilot, no auxiliary score CE"
+        ]
+      },
+      "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+      "source_sha256": {
+        "src/regression_methods/train.py": "d36ffe1d2f8b3631b9c9bbc0f60025854e770ae1bb4ea5e9b7dbeaad42e78c69",
+        "src/regression_methods/core.py": "25eb9bcde85a008a88b9851904bfc320c8817a45fceff175cd1095ea17b80d2d",
+        "src/task5_data.py": "4ee73aec2f7c044133deed6faf0b8edef9ee090b14f2afd4f323c6d85e96e999",
+        "src/train_encoder.py": "0ecb9bc5206bd50b04e300a6416c9df24fcd92ef4eb3acdc31161c05b2b52751"
+      },
+      "data_sha256": {
+        "train_sha256": "ee741cde53f4bc2aea3d76ae3975676d8d29a71f3154cb19957754d65970969f",
+        "val_sha256": "ffa28b6b4205a4f5591621999b428ca1e50dadafc3add262a9f4ebd56c7482c6"
+      },
+      "prediction_sha256": "6148b32cf75d01961cace0ebe156208ee689ec4f70fea0eb8ec3581bce861b4d",
+      "independent_verification": "PASS",
+      "local_verification": "PASS"
+    },
+    {
+      "run": "qwen4b_tract_s2_seed2027",
+      "status": "COMPLETED",
+      "scope": "EN NN Internal Val; no official Dev/Test",
+      "metrics": {
+        "rows": 704,
+        "metric_implementation": "local_public_definition_ddof0_singletons0",
+        "ModAvg": {
+          "spearman": 0.6201795022510922,
+          "rmse": 0.6325100952888442,
+          "context_variance_spearman": 0.3742610412914442,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "HeadAvg": {
+          "spearman": 0.6215401767929628,
+          "rmse": 0.591158738612073,
+          "context_variance_spearman": 0.35522793338733966,
+          "targets": 89,
+          "singleton_targets": 0
+        },
+        "mean_spearman": 0.6208598395220275,
+        "mean_rmse": 0.6118344169504586
+      },
+      "best_epoch": 3,
+      "config": {
+        "mode": "tract",
+        "seed": 2027,
+        "epochs": 3,
+        "actual_epochs": 3,
+        "batch_size": 8,
+        "grad_accum": 2,
+        "lr": 5e-05,
+        "loss": "MSE + token-mean CE on annotated reasoning and fixed score delimiter; numeric score masked from CE",
+        "expectation": "sum y*p_full_vocab(y), no digit-only renormalization",
+        "adaptations": [
+          "independent modifier/head scalar prompts",
+          "continuous labels, grid0..5",
+          "BF16 LoRA attention r16 alpha32",
+          "local Qwen teacher instead of GPT4",
+          "bounded64-token CoTs",
+          "REAL one-epoch pilot, no auxiliary score CE"
+        ]
+      },
+      "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+      "source_sha256": {
+        "src/regression_methods/train.py": "d36ffe1d2f8b3631b9c9bbc0f60025854e770ae1bb4ea5e9b7dbeaad42e78c69",
+        "src/regression_methods/core.py": "25eb9bcde85a008a88b9851904bfc320c8817a45fceff175cd1095ea17b80d2d",
+        "src/task5_data.py": "4ee73aec2f7c044133deed6faf0b8edef9ee090b14f2afd4f323c6d85e96e999",
+        "src/train_encoder.py": "0ecb9bc5206bd50b04e300a6416c9df24fcd92ef4eb3acdc31161c05b2b52751"
+      },
+      "data_sha256": {
+        "train_sha256": "ee741cde53f4bc2aea3d76ae3975676d8d29a71f3154cb19957754d65970969f",
+        "val_sha256": "ffa28b6b4205a4f5591621999b428ca1e50dadafc3add262a9f4ebd56c7482c6"
+      },
+      "prediction_sha256": "0c2d378783233753f5d924b616972b254b51deddf27eba867a6647fcc72d43a6",
+      "independent_verification": "PASS",
+      "local_verification": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "mean_pooling_suite_20261020",
+  "stages": [
+    {
+      "id": "qwen4b_mean_smoke_seed2027",
+      "output": "runs/qwen4b_mean_smoke_seed2027",
+      "scope": "Smoke",
+      "description": "Only pooling ablation: last token -> masked mean; frozen seed/split/LR/3epochs",
+      "args": [
+        "src/train_qwen_mean.py",
+        "--model",
+        "models/Qwen3-4B-Instruct-2507",
+        "--data",
+        "data/en_nn_seed2027",
+        "--output",
+        "runs/qwen4b_mean_smoke_seed2027",
+        "--smoke"
+      ],
+      "timeout_seconds": 1800
+    },
+    {
+      "id": "qwen4b_mean_seed2027",
+      "output": "runs/qwen4b_mean_seed2027",
+      "scope": "EN NN Internal Val",
+      "description": "Only pooling ablation: last token -> masked mean; frozen seed/split/LR/3epochs",
+      "args": [
+        "src/train_qwen_mean.py",
+        "--model",
+        "models/Qwen3-4B-Instruct-2507",
+        "--data",
+        "data/en_nn_seed2027",
+        "--output",
+        "runs/qwen4b_mean_seed2027"
+      ],
+      "timeout_seconds": 7200
+    }
+  ]
+}

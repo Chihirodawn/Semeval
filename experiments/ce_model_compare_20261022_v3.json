@@ -1,0 +1,76 @@
+{
+  "objective": "One fixed-seed full soft-CE run for each user-approved Qwen3.5 model after Smoke",
+  "created_date": "2026-10-22",
+  "gpu_uuid": "GPU-f3ed3c37-a52e-c126-79e9-e0a0783c584d",
+  "cpu_proof": "reports/20261022/ce_models_cpu_contract_v3_VERIFIED.json",
+  "status_file": "ce_model_compare_20261022_v3_status.json",
+  "source_sha256": {
+    "src/ce_model_compare_v3.py": "811fae18ee5757199b321c84450a9b6893f0c7b51e341230c70298d42d0a7f5a",
+    "src/regression_methods/core.py": "25eb9bcde85a008a88b9851904bfc320c8817a45fceff175cd1095ea17b80d2d",
+    "src/regression_methods/train.py": "d36ffe1d2f8b3631b9c9bbc0f60025854e770ae1bb4ea5e9b7dbeaad42e78c69",
+    "src/task5_data.py": "4ee73aec2f7c044133deed6faf0b8edef9ee090b14f2afd4f323c6d85e96e999",
+    "src/train_encoder.py": "0ecb9bc5206bd50b04e300a6416c9df24fcd92ef4eb3acdc31161c05b2b52751",
+    "scripts/run_ce_compare_v3.py": "6651f20a99a05c3d9a9c25053b285df55e58de989b028d88746eeebb38daefe1",
+    "scripts/download_ce_model.py": "7bd061cb966e256e915e3fcee2a33d19868b801537757af7bc3185ab9db79100",
+    "scripts/verify_run.py": "66c3cc04067d94132d564d837be25a685d0699c309a7f644307b3328273eec24",
+    "scripts/verify_returned_method.py": "8542cf3549b2702f32df3275ff5a2a7d90f996b9b89f8f8952585af69572b4d1",
+    "tests/ce_models_contract_v3.py": "f35c020dee8e74569272133ae7d6154fa4dfa9942a40bd08869e2ae986db2753",
+    "scripts/check_ce_tokenization.py": "33f00df1590b4f7a4bd0a897b84e83e5eaed5fffcdf55c688af09b72abfe7f7c",
+    "scripts/upload_ce_assets.py": "75c343e7748d30e4a2c03e57f12bffbf74d85c166d00c82e17cc7e46cc34bdee"
+  },
+  "data_sha256": {
+    "data/en_nn_seed2027/train.jsonl": "ee741cde53f4bc2aea3d76ae3975676d8d29a71f3154cb19957754d65970969f",
+    "data/en_nn_seed2027/val.jsonl": "ffa28b6b4205a4f5591621999b428ca1e50dadafc3add262a9f4ebd56c7482c6",
+    "data/en_nn_seed2027/split.json": "e222e8a2ad83bb0b32619f9598534fe837b5e45981be7903b4c7fff728cdeea3"
+  },
+  "models": [
+    {
+      "id": "qwen35_4b_ce_v3",
+      "name": "Qwen3.5-4B",
+      "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "batch_size": 8,
+      "grad_accum": 2,
+      "asset_transport": "verified_local_upload"
+    },
+    {
+      "id": "qwen35_9b_ce_v3",
+      "name": "Qwen3.5-9B",
+      "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+      "batch_size": 2,
+      "grad_accum": 8,
+      "asset_transport": "verified_local_upload"
+    }
+  ],
+  "fixed_recipe": {
+    "seed": 2027,
+    "epochs": 3,
+    "lr": 5e-05,
+    "effective_scalar_batch": 16,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "enable_thinking": false,
+    "no_CoT": true,
+    "selection": "max clipped mean Spearman, tie lower mean component RMSE"
+  },
+  "runtime": {
+    "python": ".venv-qwen35-ce/bin/python",
+    "torch": "2.6.0",
+    "transformers": "5.20.2",
+    "peft": "0.21.2",
+    "old_runtime_unchanged": true
+  },
+  "storage": {
+    "4B": "persistent home project models",
+    "9B": "dedicated /dev/shm/zhangtaiwei_semeval2027_ce_20261022/Qwen3.5-9B cache; local persistent canonical base",
+    "persistent_disk_min_free_gib": 5,
+    "shm_is_volatile": true
+  },
+  "limits": {
+    "queue_hours": 12,
+    "smoke_seconds": 3600,
+    "full_stage_seconds": 21600
+  },
+  "token_proof": "reports/20261022/ce_models_tokenization_VERIFIED.json",
+  "supersedes": "v2 stopped before first optimizer update by strict BF16 native projection check; original v2 files/run preserved"
+}

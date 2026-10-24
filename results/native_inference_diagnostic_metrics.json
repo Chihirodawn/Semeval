@@ -1,0 +1,82 @@
+{
+  "rows": 32,
+  "queries": 64,
+  "direct": {
+    "rows": 32,
+    "metric_implementation": "local_public_definition_ddof0_singletons0",
+    "ModAvg": {
+      "spearman": 0.5358205522668124,
+      "rmse": 0.6114127365379433,
+      "context_variance_spearman": 0.6,
+      "targets": 4,
+      "singleton_targets": 0
+    },
+    "HeadAvg": {
+      "spearman": 0.21903575050150967,
+      "rmse": 0.46699157063693775,
+      "context_variance_spearman": -0.2,
+      "targets": 4,
+      "singleton_targets": 0
+    },
+    "mean_spearman": 0.377428151384161,
+    "mean_rmse": 0.5392021535874405
+  },
+  "thinking_with_explicit_direct_fallback": {
+    "rows": 32,
+    "metric_implementation": "local_public_definition_ddof0_singletons0",
+    "ModAvg": {
+      "spearman": 0.15870721877220634,
+      "rmse": 1.712991119944453,
+      "context_variance_spearman": 0.0,
+      "targets": 4,
+      "singleton_targets": 0
+    },
+    "HeadAvg": {
+      "spearman": 0.045609459382346264,
+      "rmse": 2.1367345483382088,
+      "context_variance_spearman": -0.4,
+      "targets": 4,
+      "singleton_targets": 0
+    },
+    "mean_spearman": 0.1021583390772763,
+    "mean_rmse": 1.9248628341413307
+  },
+  "valid_thinking_only_matched_components": {
+    "Modifier": {
+      "valid_queries": 22,
+      "direct": {
+        "spearman": 0.6723276988864522,
+        "rmse": 0.5745563279991861
+      },
+      "thinking": {
+        "spearman": 0.2829662032350388,
+        "rmse": 2.0135783027916596
+      }
+    },
+    "Head": {
+      "valid_queries": 26,
+      "direct": {
+        "spearman": 0.1828484172712576,
+        "rmse": 0.46326401411846296
+      },
+      "thinking": {
+        "spearman": 0.02744441535028257,
+        "rmse": 2.3591202818710775
+      }
+    }
+  },
+  "fallback_queries": 16,
+  "first_attempt_valid_queries": 34,
+  "attempt_errors": {
+    "valid": 48,
+    "incomplete_thinking": 65
+  },
+  "limitations": [
+    "Inference-only on a direct-CE-trained checkpoint; no thinking training",
+    "Fixed first32 Internal Val rows, not full704 or Test; no checkpoint/prompt selection",
+    "Thinking uses frozen v6 free-style semantic input; comparison is the full inference flow",
+    "Overall thinking score includes explicitly disclosed direct fallback",
+    "Successful-only component subsets are selected subsets, not unbiased overall estimates",
+    "This diagnostic cannot pass or override original Train pilot/Smoke/quality gates"
+  ]
+}

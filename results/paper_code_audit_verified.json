@@ -1,0 +1,82 @@
+{
+  "checked_at": "2026-10-25T07:45:10.153875+08:00",
+  "scope": "Read-only code/paper audit plus CPU contract tests; no new quality experiment",
+  "papers": [
+    {
+      "method": "RAIL",
+      "sha256": "032a6f44b6a6f07e62f09efe607b02f90a26cd9c6f61ed8fa9fcfc721e6f5738",
+      "pdf_pages": 12,
+      "checked_sections": "PDF第3–4页，§3/Algorithm1/Table1",
+      "filename": "Regression aware inference with LLMs.pdf"
+    },
+    {
+      "method": "RAFT",
+      "sha256": "d384e876db6a26fa946b2695deb3fc0ecf9b297f82a2618fed3d4e1032e4ae0f",
+      "pdf_pages": 31,
+      "checked_sections": "PDF第5页§2.5；第6页§4.1/4.2，Eq9/10",
+      "filename": "Better autoregressive regression with LLMs via regression-aware fine-tuning.pdf"
+    },
+    {
+      "method": "TRACT",
+      "sha256": "27bfce2abd36c5926d5e0e9b2d66190110cea4df43fa622b239c7a69cc32b96a",
+      "pdf_pages": 19,
+      "checked_sections": "PDF第4页§3.2/3.3与Eq4；第5页Algorithm1",
+      "filename": "TRACT Regression-Aware Fine-tuning Meets Chain-of-Thought Reasoning for LLM-as-a-Judge.pdf"
+    },
+    {
+      "method": "REAL",
+      "sha256": "a16ac4bba055068e3a2205b535928434530616d3767c57b293774c3b64935745",
+      "pdf_pages": 20,
+      "checked_sections": "PDF第5页§4.2/4.3，Eq6–8",
+      "filename": "REAL Regression-Aware Reinforcement Learning for LLM-as-a-Judge.pdf"
+    }
+  ],
+  "source_match": {
+    "qwen4b_rail_seed2027": "MATCH",
+    "qwen4b_ce_seed2027": "MATCH",
+    "qwen4b_raft_seed2027": "MATCH",
+    "qwen4b_tract_s1_seed2027": "MATCH",
+    "qwen4b_tract_s2_seed2027": "MATCH",
+    "qwen4b_real_seed2027": "MATCH",
+    "qwen35_4b_ce_v3_seed2027": "MATCH",
+    "qwen35_9b_ce_v3_retry1_seed2027": "MATCH"
+  },
+  "legacy_cache_counts": {
+    "qwen4b_cot_base_seed2027": {
+      "rows": 5552,
+      "premature_score_rows": 2945,
+      "fraction": 0.5304394812680115,
+      "sha256": "41d454bae21d07918bbd1a2e45f47cb4c7a207d01612881afddd69ae496c03fd"
+    },
+    "qwen4b_cot_s1_seed2027": {
+      "rows": 5552,
+      "premature_score_rows": 2714,
+      "fraction": 0.4888328530259366,
+      "sha256": "dd4d4fa9a2ab2c8a0ef826fbcda518c2dc00a403ab0809299a16d02eb66f7e43"
+    }
+  },
+  "tests": {
+    "local_data_metrics": "3 PASS",
+    "local_thinking_protocol": "5 PASS",
+    "local_inference_contract": "2 PASS",
+    "server_methods_contract": "PASS: tiny Qwen3, native LM, both REAL gradients, reload, on-policy logprob",
+    "server_ce_v3_contract": "PASS: tied and untied tiny Qwen3.5",
+    "server_thinking_model_contract": "PASS: tied/untied, all loss gradients, cache, reload, RNG",
+    "server_paper_audit_contract": {
+      "status": "PASS",
+      "scope": "CPU analytical objective tests and synthetic legacy trace; no training/quality evaluation",
+      "soft_ce_continuous_labels": true,
+      "raft_full_vocabulary_expectation": true,
+      "rloo_grouping_and_two_real_gradient_terms": true,
+      "known_legacy_embedded_score_bug": "REPRODUCED",
+      "generated_score_token_supervised_in_text_ce": true,
+      "gold_never_changes_forward_prediction": true
+    }
+  },
+  "new_critical_observations": [
+    "TRACT paper Eq4 CE notation includes [CoT,y*]; official custom_loss masks final score. Local follows score-mask choice but uses sequence-mean CE and does not strip internally generated teacher scores.",
+    "REAL core generalized-gradient structure is implemented, but main experiment defaults differ: K16 vs2, lambda1 vs0, beta.01 vs1, max response1024 vs64, full tuning vsLoRA.",
+    "A0 historical source differs from current native-thinking files; archived v4 source hashes match A0 and must be published as separate provenance.",
+    "Native inference diagnostic saved prediction but discarded digit_mass; score collapse cause cannot be uniquely assigned without further measurement."
+  ]
+}
