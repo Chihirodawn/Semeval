@@ -4,7 +4,7 @@
   "source_files_unchanged": true,
   "frozen_a0_files": "snapshots/a0_v4/src; current thinking files are v6/diagnostic",
   "files": {
-    "README.md": "ce8d857a77312e1b2b3bb2f5f36e245e07ee40d3256f15d9395bebc3aec26a58",
+    "README.md": "f395c4d20800e9318f1a1511fe029e31239b6057f64ac3feb1c502eb5467f1fd",
     "environments/qwen3.json": "4aea46e7c5724074dafefa95878dcfda0c9e4aba5871f7d2faa85c39636b756c",
     "environments/qwen35.json": "db3dcf441d93c41811a27508ccdd9fe57460550b7e1e58ec9b1b11d2cd29ffd3",
     "experiments/ce_model_compare_20261022_9b_retry1.json": "5e28ecc2b38dc3cf49905a38d1d943d0888e4cae28a93042912f14fcd82a1116",
@@ -43,9 +43,12 @@
     "tests/test_data_metrics.py": "c3f8ffa92ccff00567c80fb6f66bf8e0f2105a1ff00e5cfa451c66821d0b2f9f",
     "tests/thinking_model_contract.py": "f3232754e95a54cd78de2be168f436e5132296da607135adcaf5489f1c4ec854",
     "tests/thinking_protocol_contract.py": "828314b213d65a4b13e16b77bbb14559e51212f6c99f556d17faf14b966caaa7",
-    "代码与论文方法审查.md": "ed663215b1b6e7043358430638263e62db91f3b95217af8c4c26b0c7a492881a",
-    "汇报问答.md": "2917df54bce9bf16410d954ec5a3f381d18a652300661e5666ae268b29f02370",
     "实验记录.md": "7e4bf3e72c792623932e47a05077475d315331bc07a5f94178a08a759affbf26"
   },
-  "existing_week_report_unchanged": true
+  "existing_week_report_unchanged": true,
+  "local_only_documents": [
+    "代码与论文方法审查.md",
+    "汇报问答.md"
+  ],
+  "updated_date": "2026-10-25"
 }
